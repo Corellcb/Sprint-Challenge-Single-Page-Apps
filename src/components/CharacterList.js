@@ -6,8 +6,9 @@ import axios from 'axios';
 const CharacterDiv = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: whitesmoke;
+  border: black solid 2px;
 `
 
 const CenteredText = styled.h2`
@@ -43,6 +44,7 @@ export default function CharacterList() {
       <CenteredText>Characters</CenteredText>
       <section>
         <form>
+          <label>Search a Character: </label>
           <input
             type="text"
             onChange={handleInputChange}
@@ -50,7 +52,6 @@ export default function CharacterList() {
             name="name"
             placeholder="search by name"
             autoComplete="off"
-            tabIndex="0"
           />
         </form>
       </section>

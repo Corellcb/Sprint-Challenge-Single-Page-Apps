@@ -2,8 +2,10 @@ import React from "react";
 import styled from 'styled-components';
 
 const CharDiv = styled.div`
-  width: 40%;
-  margin: auto;
+  width: 43%;
+  padding: 2%;
+  background-color: white;
+  margin: 1% 0;
 `
 
 export default function CharacterCard(character) {
