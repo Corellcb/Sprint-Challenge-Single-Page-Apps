@@ -16,31 +16,31 @@ const CenteredText = styled.h2`
 `
 
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
+
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-    axios.get('https://rickandmortyapi.com/api/character/')
-    .then(res => {
-      console.log(res.data.results);
-      const data = res.data.results;
-      const results = data.filter(e => {
-        console.log(e.name);
+    axios
+      .get('https://rickandmortyapi.com/api/character/')
+      .then(response => {
+        const character = response.data.results.filter(
+          character =>
+            character.name
+              .toLowerCase()
+              .includes(query.toLowerCase())
+        );
+        setData(character);
       });
-      console.log(results);
-      setCharacters(results);
-    });
   }, [query]);
+
   const handleInputChange = event => {
     setQuery(event.target.value);
   };
 
-  const SearchForm = () => {
-
-    return (
+  return (
+    <section className="character-list">
+      <CenteredText>Characters</CenteredText>
       <section>
         <form>
           <input
@@ -54,16 +54,9 @@ export default function CharacterList() {
           />
         </form>
       </section>
-    );
-  }
-
-  return (
-    <section className="character-list">
-      <CenteredText>Characters</CenteredText>
-      <SearchForm />
       <CharacterDiv>
-        {characters.map(characters => (
-          <CharacterCard key={characters.id} name={characters.name} status={characters.status} species={characters.species} />
+        {data.map(data => (
+          <CharacterCard key={data.id} name={data.name} status={data.status} species={data.species} />
         ))}
       </CharacterDiv>
     </section>
