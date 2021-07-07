@@ -29,6 +29,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 > Answer:
 
+client-side routing keeps network requests low, and makes sure that all components are already downloaded by the browser and all they have todo is load it. This is good for network speed, user experience and web traffic control. It's also cleaner.
+
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
